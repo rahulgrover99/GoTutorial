@@ -5,6 +5,8 @@ package main
 
 import "fmt"
 
+// Standard library package (Format)
+
 // package main also must have func main
 func main() {
 	fmt.Println("Hi")

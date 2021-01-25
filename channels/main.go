@@ -20,8 +20,8 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	for _, link := range urls {
-		fmt.Println(link, <-c)
+	for {
+		go checkLink(<-c, c)
 	}
 
 }
@@ -31,9 +31,9 @@ func checkLink(link string, c chan string) {
 	if err != nil {
 		fmt.Println(link, "might be down.")
 		fmt.Println(err)
-		c <- "DOWN"
+		c <- link
 		return
 	}
 	fmt.Println(link, "is up!")
-	c <- "UP"
+	c <- link
 }
